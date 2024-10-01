@@ -1,13 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from "./header/header.component";
+import { FooterComponent } from "./footer/footer.component";
+import { NavbarComponent } from "./navbar/navbar.component";
+import { PostsListComponent } from "./posts-list/posts-list.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, NavbarComponent, PostsListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'angular-compontent-structure';
+  isLoggedIn: boolean = true;
+  postTitle: string = 'Post 1 from Parent Component';
+  @ViewChild(PostsListComponent) messageFromChild: any;
+  message: string = '';
+
+  constructor(){
+    console.log(this.messageFromChild)
+  }
+
+  ngAfterViewInit() {
+      console.log(this.messageFromChild)
+      this.message = this.messageFromChild.childMessage
+  }
+
+  recieveMessage(message: string){
+    console.log('wow')
+    console.log(message)
+  }
 }

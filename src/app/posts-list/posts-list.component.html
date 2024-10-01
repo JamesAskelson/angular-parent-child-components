@@ -1,0 +1,10 @@
+<h2>{{title}}</h2>
+
+@if (postIsLogged) {
+    <p>Successful binding from parent to child</p>
+}
+@else {
+    <p>Unsuccessful binding from parent to child</p>
+}
+
+<button (click)="sendToParent()">wow</button>
