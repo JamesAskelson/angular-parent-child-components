@@ -1,4 +1,9 @@
-<app-header></app-header>
-<app-navbar></app-navbar>
 <app-posts-list [title]="postTitle" [postIsLogged]="isLoggedIn" (MessageEvent)="recieveMessage($event)"></app-posts-list>
+@if(childMessage.length > 0){
+    <p>{{childMessage}}</p>
+}
+@else {
+    <p>No message recieved.</p>
+}
+<br>
 {{message}}

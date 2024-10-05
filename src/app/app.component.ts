@@ -17,8 +17,8 @@ export class AppComponent implements AfterViewInit {
   isLoggedIn: boolean = true;
   postTitle: string = 'Post 1 from Parent Component';
   @ViewChild(PostsListComponent) messageFromChild: any;
+  childMessage: string = '';
   message: string = '';
-
   constructor(){
     console.log(this.messageFromChild)
   }
@@ -28,8 +28,8 @@ export class AppComponent implements AfterViewInit {
       this.message = this.messageFromChild.childMessage
   }
 
-  recieveMessage(message: string){
+  recieveMessage(messageData: string){
     console.log('wow')
-    console.log(message)
+    this.childMessage = messageData;
   }
 }
